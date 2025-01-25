@@ -34,6 +34,7 @@ CREATE TABLE tb_carro (
     id             INT PRIMARY KEY DEFAULT nextval('global_sequence'),
     modelo         VARCHAR(100)                                                                   NOT NULL,
     fabricante     VARCHAR(100)                                                                   NOT NULL,
+    cor            VARCHAR(100)                                                                   NOT NULL,
     ano            INT                                                                            NOT NULL,
     preco          DECIMAL(10, 2)                                                                 NOT NULL,
     num_portas     INT                                                                            NOT NULL,
@@ -44,6 +45,7 @@ CREATE TABLE tb_moto(
     id         INT PRIMARY KEY DEFAULT nextval('global_sequence'),
     modelo     VARCHAR(100)   NOT NULL,
     fabricante VARCHAR(100)   NOT NULL,
+cor            VARCHAR(100)   NOT NULL,
     ano        INT            NOT NULL,
     preco      DECIMAL(10, 2) NOT NULL,
     cilindrada INT            NOT NULL

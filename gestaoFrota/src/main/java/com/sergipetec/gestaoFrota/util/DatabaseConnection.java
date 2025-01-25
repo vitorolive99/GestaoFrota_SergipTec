@@ -10,6 +10,8 @@ import java.util.Properties;
 public class DatabaseConnection {
     private static final String PROPERTIES_FILE = "src/main/resources/database.properties";
 
+    private DatabaseConnection() {}
+
     public static Connection getConnection(){
         Properties props = new Properties();
         try (FileInputStream fis = new FileInputStream(PROPERTIES_FILE)) {
