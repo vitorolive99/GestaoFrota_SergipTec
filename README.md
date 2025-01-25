@@ -34,12 +34,13 @@ Este é um projeto de sistema de gestão de frota desenvolvido em **Java**, util
 src/
 ├── main/
 │   ├── java/com/sergipetec/gestaoFrota
-│   │   ├── controller/       # Endpoints da API
+│   │   ├── controller/      # Endpoints da API
 │   │   ├── dao/             # Classes de acesso ao banco de dados
 │   │   ├── model/           # Entidades do sistema (Carro, Moto, Veículo)
 |   |   ├── service/         # Regras e validações
 │   │   └── util/            # Conexão com o banco de dados
 │   ├── resources/
+|   |   ├── database/        # Arquivos de criação do banco e povoamento
 │       ├── static/          # Arquivos estáticos (HTML, CSS, JS)
 ```
 
@@ -58,12 +59,12 @@ src/
    ```
 
 2. Configure o banco de dados:
-   - Crie um banco de dados PostgreSQL seguindo os comandos escrito no arquivo sql em `src/main/resources/database/schema.sql`; 
+   - Crie um banco de dados PostgreSQL seguindo os comandos escritos no arquivo sql em `src/main/resources/database/schema.sql`; 
    - Atualize as credenciais de acesso ao banco no arquivo `database.properties`:
      ```properties
-     spring.datasource.url=jdbc:postgresql://localhost:5432/db_frota
-     spring.datasource.username=seu_usuario
-     spring.datasource.password=sua_senha
+     db.url=jdbc:postgresql://localhost:5432/db_frota
+     db.user=seu_usuario
+     db.password=sua_senha
      ```
 
 3. Execute a aplicação:
