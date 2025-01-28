@@ -11,7 +11,7 @@
 	<groupId>com.sergipetec.frota</groupId>
 	<artifactId>gestaoFrota</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+	<packaging>war</packaging>
 	<name>gestaoFrota</name>
 	<description>Demo project for Spring Boot</description>
 	<url/>
@@ -69,7 +69,10 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<annotationProcessorPaths/>
-				</configuration>
+                    <source>23</source>
+                    <target>23</target>
+                    <compilerArgs>--enable-preview</compilerArgs>
+                </configuration>
 			</plugin>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>

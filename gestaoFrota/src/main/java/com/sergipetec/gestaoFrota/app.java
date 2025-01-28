@@ -1,6 +1,5 @@
 package com.sergipetec.gestaoFrota;
 
-import com.sergipetec.gestaoFrota.dao.VeiculoDAO;
 import com.sergipetec.gestaoFrota.model.Carro;
 import com.sergipetec.gestaoFrota.service.VeiculoService;
 

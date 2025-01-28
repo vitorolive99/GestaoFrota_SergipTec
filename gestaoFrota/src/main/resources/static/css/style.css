@@ -1,0 +1,7 @@
+.border_line{
+    border: 1px solid red;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+    appearance: none;
+}

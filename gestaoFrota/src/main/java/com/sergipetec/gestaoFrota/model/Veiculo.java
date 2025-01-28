@@ -1,10 +1,21 @@
 package com.sergipetec.gestaoFrota.model;
 
+import com.fasterxml.jackson.annotation.JsonSubTypes;
+import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 
+@JsonTypeInfo(
+        use = JsonTypeInfo.Id.NAME,
+        include = JsonTypeInfo.As.PROPERTY,
+        property = "type"
+)
+@JsonSubTypes({
+    @JsonSubTypes.Type(value = Carro.class, name = "carro"),
+    @JsonSubTypes.Type(value = Moto.class, name = "moto")
+})
 @Entity
-public class Veiculo {
+public abstract class Veiculo {
     @Id
     private Long id;
     private String modelo;

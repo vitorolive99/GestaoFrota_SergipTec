@@ -1,10 +1,177 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Gestão de frota</title>
+
+    <!-- Bootstrap início -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- Bootstrap fim -->
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/025847eba7.js" crossorigin="anonymous"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+
 </head>
-<body>
-    <h1>Hello world!!!</h1>
+<body onload="listarVeiculos()">
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
+    <div class="container">
+        <a class="navbar-brand" href="#">
+            <img src="content/logo.png" width="50" height="50" alt="Gestão de frota">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="index.html">Consulta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cadastro.html">Cadastro</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row mb-5">
+        <div class="col-md-8">
+            <h1 class="display-4">Consulta de veículos</h1>
+        </div>
+        <div class="col-md-4 d-flex justify-content-end" >
+            <a href="cadastro.html" class="btn btn-primary btn-md align-self-center">
+                Cadastrar novo veiculo
+            </a>
+        </div>
+    </div>
+
+    <h2>Filtros</h2>
+
+    <div class="row mb-0">
+        <div class="col-md-2">
+            <label class="align-content-center" for="tipoVeiculo">Tipo do veículo:</label>
+        </div>
+
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-2">
+            <select class="form-control" id="tipoVeiculo">
+                <option value="carro">Carro</option>
+                <option value="moto">Moto</option>
+            </select>
+        </div>
+
+        <div class="col-md-2">
+            <input type="number" class="form-control" placeholder="Ano" id="ano" />
+        </div>
+
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Modelo" id="modelo" />
+        </div>
+
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Fabricante" id="fabricante" />
+        </div>
+
+        <div class="col-md-2">
+            <input type="text" class="form-control" placeholder="Cor" id="cor" />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            <label class="align-content-center" for="tipoCombustivel" id="combustivelLabel">Tipo de combustível:</label>
+        </div>
+
+        <div class="col-md-2">
+            <label class="align-content-center" for="numPortas" id="portasLabel">Número de portas:</label>
+        </div>
+
+        <div class="col-md-4">
+            <label for="valorMax">
+                Faixa de preço:
+            </label>
+        </div>
+    </div>
+
+    <div class="row  mb-5">
+        <div class="col-md-2" id="tipoCombustivelContainer" style="display: block">
+            <select class="form-control" id="tipoCombustivel">
+                <option value="">Selecionar</option>
+                <option value="gasolina">Gasolina</option>
+                <option value="etanol">Etanol</option>
+                <option value="diesel">Diesel</option>
+                <option value="flex">Flex</option>
+            </select>
+        </div>
+
+        <div class="col-md-2" id="numPortasContainer" style="display: block">
+            <select class="form-control" id="numPortas">
+                <option value="">Selecionar</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+        
+        <div class="col-md-2" id="cilindradasContainer" style="display: none">
+            <input type="number" class="form-control" placeholder="Cilindradas" id="cilindradas">
+        </div>
+
+        <div class="col-md-2" id="espacador" style="display: none"></div>
+
+        <div class="col-md-3">
+            <input type="text" class="form-control" placeholder="Valor mínimo" id="valorMin" />
+        </div>
+
+        <div class="col-md-3">
+            <input type="text" class="form-control" placeholder="Valor máximo" id="valorMax" />
+        </div>
+
+        <div class="col-md-2 d-flex justify-content-end">
+            <button type="button" class="btn btn-primary" onclick="pesquisarFiltros()">
+                Pesquisar <i class="fas fa-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table class="table" >
+                <thead>
+                <tr>
+                    <th>Modelo</th>
+                    <th>Fabricante</th>
+                    <th>Ano</th>
+                    <th>Cor</th>
+                    <th>Preço</th>
+                    <th></th>
+                </tr>
+                </thead>
+
+                <tbody id="listaVeiculos">
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- JavaScript local-->
+<script src="js/script.js"></script>
 </body>
 </html>

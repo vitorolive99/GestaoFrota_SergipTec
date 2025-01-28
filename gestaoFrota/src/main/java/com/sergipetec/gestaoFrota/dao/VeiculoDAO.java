@@ -71,7 +71,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
             try (PreparedStatement statement = connection.prepareStatement(sql)) {
                 preencherStatementCarro(statement, carro);
-                statement.setLong(7, carro.getId());
+                statement.setLong(8, carro.getId());
                 statement.executeUpdate();
 
                 connection.close();
@@ -86,7 +86,7 @@ public class VeiculoDAO implements IVeiculoDAO {
 
             try (PreparedStatement stmt = connection.prepareStatement(sql)) {
                 preencherStatementMoto(stmt, moto);
-                stmt.setLong(6, moto.getId());
+                stmt.setLong(7, moto.getId());
                 stmt.executeUpdate();
 
                 connection.close();
