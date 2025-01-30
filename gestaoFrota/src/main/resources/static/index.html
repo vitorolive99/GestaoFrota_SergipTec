@@ -24,7 +24,7 @@
 <body onload="listarVeiculos()">
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
     <div class="container">
-        <a class="navbar-brand" href="#">
+        <a class="navbar-brand" href="index.html">
             <img src="content/logo.png" width="50" height="50" alt="Gestão de frota">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -171,6 +171,44 @@
     </div>
 </div>
 
+<!-- Modal de Confirmação -->
+<div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger">Excluir veículo?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir este veículo?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnConfirmarExclusao">Excluir</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="registroGravacao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="modal_titulo_div">
+                <h5 class="modal-title " id="modal_titulo"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="modal_body" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button id="modal_btn" type="button" data-dismiss="modal"></button>
+            </div>
+        </div>
+    </div>
+</div>
 <!-- JavaScript local-->
 <script src="js/script.js"></script>
 </body>

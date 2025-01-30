@@ -4,7 +4,7 @@ import com.sergipetec.gestaoFrota.model.Carro;
 import com.sergipetec.gestaoFrota.service.VeiculoService;
 
 public class app {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Carro v = new Carro();
         v.setAno(2010);
         v.setPreco(15000);

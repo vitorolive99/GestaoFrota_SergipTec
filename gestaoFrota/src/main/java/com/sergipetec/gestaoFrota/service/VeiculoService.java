@@ -11,12 +11,9 @@ import java.util.List;
 public class VeiculoService {
     private static final VeiculoDAO veiculoDAO = new VeiculoDAO();
 
-    public Veiculo cadastrarVeiculo(Veiculo veiculo) {
-        try {
-            validarDados(veiculo);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public Veiculo cadastrarVeiculo(Veiculo veiculo) throws Exception {
+        validarDados(veiculo);
+
         veiculoDAO.save(veiculo);
         return veiculo;
     }
@@ -29,12 +26,9 @@ public class VeiculoService {
         veiculoDAO.delete(id);
     }
 
-    public Veiculo atualizarVeiculo(Veiculo veiculo) {
-        try {
-            validarDados(veiculo);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+    public Veiculo atualizarVeiculo(Veiculo veiculo) throws Exception {
+        validarDados(veiculo);
+
         veiculoDAO.update(veiculo);
         return veiculo;
     }
@@ -60,7 +54,7 @@ public class VeiculoService {
             throw new Exception("Preço do veículo inválido.");
         }
         if (veiculo instanceof Moto) {
-            if (((Moto) veiculo).getCilindrada() < 50) {
+            if (((Moto) veiculo).getCilindradas() < 50) {
                 throw new Exception("Cilindrada do veículo inválida.");
             }
         }

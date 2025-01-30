@@ -4,21 +4,21 @@ import jakarta.persistence.Entity;
 
 @Entity
 public class Moto extends Veiculo {
-    private int cilindrada;
+    private int cilindradas;
 
     public Moto(Long id, String modelo, String fabricante, int ano, double preco, int cilindrada, String cor) {
         super(id, modelo, fabricante, ano, preco, cor);
-        this.cilindrada = cilindrada;
+        this.cilindradas = cilindrada;
     }
 
     public Moto() {
     }
 
-    public int getCilindrada() {
-        return cilindrada;
+    public int getCilindradas() {
+        return cilindradas;
     }
 
-    public void setCilindrada(int cilindrada) {
-        this.cilindrada = cilindrada;
+    public void setCilindradas(int cilindrada) {
+        this.cilindradas = cilindrada;
     }
 }

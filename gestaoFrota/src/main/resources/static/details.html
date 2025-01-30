@@ -24,78 +24,116 @@
 
 </head>
 <body onload="carregaDetalhes()">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
-        <div class="container">
-            <a class="navbar-brand" href="#">
-                <img src="content/logo.png" width="50" height="50" alt="Gestão de frota">
-            </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Consulta</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="cadastro.html">Cadastro</a>
-                    </li>
-                </ul>
-
-            </div>
-        </div>
-    </nav>
-
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-5">
     <div class="container">
-        <div class="row mb-3 d-flex align-items-center border rounded">
-            <div class="col-md-8">
-                <h1 class="display-4" id="nomeModelo">veiculo</h1>
-                <h2 id="nomeFabricante">fabricante</h2>
-            </div>
+        <a class="navbar-brand" href="index.html">
+            <img src="content/logo.png" width="50" height="50" alt="Gestão de frota">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
 
-            <div class="col-md-4 d-flex justify-content-end">
-                <a id="editLink" href="" class="btn btn-primary mr-2">Editar</a>
-                <button class="btn btn-danger" onclick="excluirVeiculo()">Excluir</button>
-            </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="index.html">Consulta</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="cadastro.html">Cadastro</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <div class="row mb-3 d-flex align-items-center border rounded">
+        <div class="col-md-8">
+            <h1 class="display-4" id="nomeModelo">veiculo</h1>
+            <h2 id="nomeFabricante">fabricante</h2>
         </div>
 
-        <div class="row border rounded">
-            <div class="row col-12">
-                <div class="col-md-3">
-                    <h5>Ano:</h5>
-                    <p id="anoVeiculo">a</p>
-                </div>
-
-                <div class="col-md-3">
-                    <h5>Cor:</h5>
-                    <p id="corVeiculo">b</p>
-                </div>
-
-                <div class="col-md-3">
-                    <h5>Preço:</h5>
-                    <p id="precoVeiculo">c</p>
-                </div>
-            </div>
-
-            <div class="row col-12">
-                <div class="col-md-3">
-                    <h5>Tipo de combustível:</h5>
-                    <p id="tipoCombustivel">d</p>
-                </div>
-
-                <div class="col-md-3">
-                    <h5>Número de portas:</h5>
-                    <p id="numPortas">e</p>
-                </div>
-                <div class="col-md-3" style="display: none">
-                    <h5>Cilindradas:</h5>
-                    <p id="cilindradas"></p>
-                </div>
-            </div>
+        <div class="col-md-4 d-flex justify-content-end">
+            <a id="editLink" href="" class="btn btn-primary mr-2">Editar</a>
+            <button class="btn btn-danger btn-excluir" data-id="">Excluir</button>
         </div>
-
     </div>
 
+    <div class="row border rounded">
+        <div class="row col-12">
+            <input class="col-md-3" id="tipoVeiculo" value="" style="display: none"/>
+
+            <div class="col-md-3">
+                <h5>Ano:</h5>
+                <p id="anoVeiculo">a</p>
+            </div>
+
+            <div class="col-md-3">
+                <h5>Cor:</h5>
+                <p id="corVeiculo">b</p>
+            </div>
+
+            <div class="col-md-3">
+                <h5>Preço:</h5>
+                <p id="precoVeiculo">c</p>
+            </div>
+        </div>
+
+        <div class="row col-12">
+            <div class="col-md-3" id="tipoCombustivelContainer">
+                <h5>Tipo de combustível:</h5>
+                <p id="tipoCombustivel">d</p>
+            </div>
+
+            <div class="col-md-3" id="numPortasContainer">
+                <h5>Número de portas:</h5>
+                <p id="numPortas">e</p>
+            </div>
+            <div class="col-md-3" id="cilindradasContainer">
+                <h5>Cilindradas:</h5>
+                <p id="cilindradas">f</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal de Confirmação -->
+<div class="modal fade" id="modalConfirmacao" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger">Excluir veículo?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Tem certeza que deseja excluir este veículo?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" id="btnConfirmarExclusao">Excluir</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="registroGravacao" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div id="modal_titulo_div">
+                <h5 class="modal-title " id="modal_titulo"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div id="modal_body" class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button id="modal_btn" type="button" data-dismiss="modal"></button>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>

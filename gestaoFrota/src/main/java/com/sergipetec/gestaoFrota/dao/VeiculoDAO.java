@@ -242,6 +242,6 @@ public class VeiculoDAO implements IVeiculoDAO {
         stmt.setInt(3, moto.getAno());
         stmt.setString(4, moto.getCor());
         stmt.setDouble(5, moto.getPreco());
-        stmt.setInt(6, moto.getCilindrada());
+        stmt.setInt(6, moto.getCilindradas());
     }
 }
