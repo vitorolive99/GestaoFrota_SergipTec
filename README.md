@@ -60,11 +60,24 @@ src/
 
 2. Configure o banco de dados:
    - Crie um banco de dados PostgreSQL seguindo os comandos escritos no arquivo sql em `src/main/resources/database/schema.sql`; 
-   - Atualize as credenciais de acesso ao banco no arquivo `database.properties`:
-     ```properties
+   - Atualize as credenciais de acesso ao banco no arquivo `database.properties` e `application.properties`:
+     ```database.properties
      db.url=jdbc:postgresql://localhost:5432/db_frota
      db.user=seu_usuario
      db.password=sua_senha
+     ```
+     ```application.properties
+     spring.application.name=gestaoFrota
+     # Configuração do banco de dados
+     spring.datasource.url=jdbc:postgresql://localhost:5432/db_frota
+     spring.datasource.username=seu_usuario
+     spring.datasource.password=sua_senha
+     spring.datasource.driver-class-name=org.postgresql.Driver
+      
+     # Hibernate configurações
+     spring.jpa.hibernate.ddl-auto=none
+     spring.jpa.show-sql=true
+     spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
      ```
 
 3. Execute a aplicação:
